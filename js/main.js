@@ -256,3 +256,23 @@ btn.addEventListener('click', () => {
 })
 })
 
+
+const cargarGatito = async () => {
+    try{
+        const respuesta = await fetch('https://api.thecatapi.com/v1/images/search')
+        console.log(respuesta)
+        if (respuesta.status===200){
+            const datos = await respuesta.json()
+            console.log(datos)
+
+            let catApi = ''
+            catApi = catApi + `<p>${datos[0].url}</p>`
+
+            document.getElementById('gatito').innerHTML = catApi
+        }
+    } catch (error)  {
+
+    }
+}
+
+cargarGatito() //Consumí una API de gatitos que responde con un url de una imágen. 
